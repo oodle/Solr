@@ -1,4 +1,5 @@
-me": "odl/solr",
+{
+    "name": "odl/solr",
     "description": "Build solr query using OO.",
     "keywords": ["solr query builder"],
     "type": "library",
