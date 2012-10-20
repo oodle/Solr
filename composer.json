@@ -1,0 +1,15 @@
+me": "odl/solr",
+    "description": "Build solr query using OO.",
+    "keywords": ["solr query builder"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Tee"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Odl\Solr": "" }
+    },
+    "target-dir": "Odl\Solr"
+}
