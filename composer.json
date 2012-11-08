@@ -12,5 +12,5 @@
     "autoload": {
         "psr-0": { "Odl\\Solr": "" }
     },
-    "target-dir": "Odl\\Solr"
+    "target-dir": "Odl/Solr"
 }
