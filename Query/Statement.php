@@ -105,7 +105,8 @@ abstract class Statement
 		}
 		else if (is_scalar($token))
 		{
-			if (str_word_count($token) > 1 || strpos($token, '-') !== false)
+			$words = explode(' ', $token);
+			if (count($words) > 1)
 			{
 				return new Phrase($token, $field);
 			}
