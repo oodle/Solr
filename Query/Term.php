@@ -1,19 +1,19 @@
 <?php
 namespace Odl\Solr\Query;
 
-class Term 
+class Term
 	extends TokenStatement
 {
 	protected $fuzzy;
 	protected $field;
-	
+
 	public function __construct($token, $field = null, $fuzzy = null)
 	{
 		$this->field = $field;
 		$this->setFuzzy($fuzzy);
 		$this->setToken($token);
 	}
-	
+
 	public function getTerm()
 	{
 		$token = $this->autoEscape ? Statement::escapeToken($this->token) : $this->token;
@@ -21,25 +21,26 @@ class Term
 		{
 			$token = $token . '~' . $this->fuzzy;
 		}
-		
+
 		if ($this->field)
 		{
 			return $this->field . ': ' . $token;
 		}
-		
+
 		return $token;
 	}
-	
+
 	public function setToken($token)
 	{
-		if (str_word_count($token) > 1)
+		$words = explode(' ', $token);
+		if (count($words) > 1)
 		{
 			throw new \Exception('Term should not have more than one word');
 		}
-		
+
 		$this->token = $token;
 	}
-	
+
 	/**
 	 * @return the $fuzzy
 	 */
@@ -65,12 +66,12 @@ class Term
 		{
 			throw new \Exception("Fuzzy must be in between 0 and 1");
 		}
-		
+
 		if ($fuzzy !== null)
 		{
 			$this->fuzzy = (float) $fuzzy;
 		}
-		else 
+		else
 		{
 			$this->fuzzy = null;
 		}
